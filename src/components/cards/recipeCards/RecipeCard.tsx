@@ -5,7 +5,7 @@ import './RecipeCard.css'
 const RecipeCard: React.FC<RecipesCardProps> = ({ name, image, cuisineId, dietId, onClick }) => {
     return (
         <Card hoverable color="var(--primary)" className="recipe-card" onClick={onClick}>
-            <Card.Meta title={name} />
+            <Card.Meta title={name} className="card-title"/>
             <div className="card-body">
                 <div className="body-left">
                     <p>👨🏻‍🍳 {cuisineId}</p>

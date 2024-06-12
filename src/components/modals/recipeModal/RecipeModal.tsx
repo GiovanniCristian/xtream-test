@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Modal, Rate, Input, Button, List } from 'antd';
+import { Modal, Rate, Input, Button, List, Typography } from 'antd';
 import { RecipesModalProps } from '../../../interfaces/recipes';
 import './recipeModal.css'
+
+const { Title } = Typography;
 
 const RecipeModal: React.FC<RecipesModalProps> = ({ open, onClose, recipe, addComment }) => {
     const [newComment, setNewComment] = useState<string>('')
@@ -21,20 +23,20 @@ const RecipeModal: React.FC<RecipesModalProps> = ({ open, onClose, recipe, addCo
             width={600}
             centered
         >
-            <h1>{recipe.name}</h1>
+            <Title className='title' level={2}>{recipe.name}</Title>
             <img src={`http://localhost:8080${recipe.image}`} alt={recipe.name} className="recipe-image" />
-            <h3>Ingredients:</h3>
+            <Title className='title' level={4}>Ingredients:</Title>
             <div className="recipe-ingredients">
                 {recipe.ingredients.map((ingredient, index) => (
                     <span key={index} className="ingredient">{ingredient}</span>
                 ))}
             </div>
-            <h3>Instructions:</h3>
+            <Title className='title' level={4}>Instructions:</Title>
             <div className="recipe-instructions">{recipe.instructions}</div>
-            <h3>Cuisine: {recipe.cuisineId}</h3>
-            <h3>Diet: {recipe.dietId}</h3>
-            <h3>Difficulty: {recipe.difficultyId}</h3>
-            <h3>Comments:</h3>
+            <Title className='title' level={4}>Cuisine: {recipe.cuisineId}</Title>
+            <Title className='title' level={4}>Diet: {recipe.dietId}</Title>
+            <Title className='title' level={4}>Difficulty: {recipe.difficultyId}</Title>
+            <Title className='title' level={4}>Comments:</Title>
             <List
                 className="comment-list"
                 itemLayout="horizontal"

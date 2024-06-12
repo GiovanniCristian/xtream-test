@@ -91,7 +91,7 @@ const Home: React.FC = () => {
           <Row gutter={[16, 16]} justify="center">
             <Col span={24}>
               <div className="header-card">
-                <Title level={2}>Welcome to My Cooking Site</Title>
+                <Title level={2}>Recipe Book</Title>
               </div>
             </Col>
             {recipes.map(recipe => (

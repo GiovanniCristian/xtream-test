@@ -3,6 +3,10 @@
   overflow: hidden;
 }
 
+.card-title {
+  color: var(--dark);
+}
+
 .card-body {
   margin-top: 0.5rem;
   width: 100%;
@@ -16,6 +20,7 @@
 
 .card-body p {
   margin: 0;
+  color: var(--dark);
 }
 
 .body-right img {
