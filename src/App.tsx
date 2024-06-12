@@ -18,7 +18,7 @@ const App: React.FC = () => {
 
   return (
     <Router>
-      <Layout className="app">
+      <Layout hasSider className="app">
         <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
         <Layout className="site-layout">
           <Content className="site-layout-background">

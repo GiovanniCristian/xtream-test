@@ -13,7 +13,7 @@ const { Sider } = Layout;
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
     return (
-        <Sider width='50%' collapsed={!isOpen} onCollapse={toggleSidebar} className="sidebar">
+        <Sider collapsed={!isOpen} onCollapse={toggleSidebar} className="sidebar">
             <Menu mode="inline" className='menu'>
                 <Menu.Item key="1" icon={<HomeOutlined />}>
                     <Link to="/" className='menu-link'>Home</Link>
