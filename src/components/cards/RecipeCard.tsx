@@ -1,7 +1,7 @@
 import { Card } from "antd";
 import { RecipesProps } from "../../interfaces/recipes";
 
-const RecipeCard: React.FC<RecipesProps> = ({ id, name, ingredients, instructions, image }) => {
+const RecipeCard: React.FC<RecipesProps> = ({ name, ingredients, instructions, image, cuisineId, dietId, difficultyId }) => {
     return (
         <Card
             hoverable
@@ -10,6 +10,9 @@ const RecipeCard: React.FC<RecipesProps> = ({ id, name, ingredients, instruction
         >
             <Card.Meta title={name} />
             <div className="recipe-details">
+                <h4>Cuisine: {cuisineId}</h4>
+                <h4>Diet: {dietId}</h4>
+                <h4>Difficulty: {difficultyId}</h4>
                 <h3>Ingredients:</h3>
                 <ul>
                     {ingredients.map((ingredient, index) => (
