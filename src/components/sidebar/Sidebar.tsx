@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
 import {
     HomeOutlined,
-    AppstoreOutlined,
+    BookFilled,
     MailOutlined,
 } from '@ant-design/icons';
 import { SidebarProps } from '../../interfaces/sidebar';
@@ -13,16 +13,16 @@ const { Sider } = Layout;
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
     return (
-        <Sider collapsible collapsed={!isOpen} onCollapse={toggleSidebar} className="sidebar">
-            <Menu mode="inline">
+        <Sider width='50%' collapsed={!isOpen} onCollapse={toggleSidebar} className="sidebar">
+            <Menu mode="inline" className='menu'>
                 <Menu.Item key="1" icon={<HomeOutlined />}>
-                    <Link to="/">Home</Link>
+                    <Link to="/" className='menu-link'>Home</Link>
                 </Menu.Item>
-                <Menu.Item key="2" icon={<AppstoreOutlined />}>
-                    <Link to="recipes">Recipes</Link>
+                <Menu.Item key="2" icon={<BookFilled />}>
+                    <Link to="recipes" className='menu-link'>Recipes</Link>
                 </Menu.Item>
                 <Menu.Item key="3" icon={<MailOutlined />}>
-                    <Link to="add">Add Recipes</Link>
+                    <Link to="add" className='menu-link'>Add Recipes</Link>
                 </Menu.Item>
             </Menu>
         </Sider>

@@ -1,4 +1,4 @@
-import React from 'react'
+import { RecipesProps } from "../../interfaces/recipes"
 
 const Recipes = () => {
   return (

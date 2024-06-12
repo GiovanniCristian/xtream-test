@@ -1,0 +1,36 @@
+.home-layout {
+    gap: 2rem;
+}
+
+.header {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    background-color: var(--primary);
+    border-radius: var(--borderMD);
+    padding: 0rem 1rem !important;
+}
+
+.home {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    background-color: var(--primary);
+    border-radius: var(--borderMD);
+    padding: 1rem !important;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.typed {
+    color: var(--dark);
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.footer {
+    width: 100%;
+    text-align: center;
+}

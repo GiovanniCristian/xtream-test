@@ -1,8 +1,7 @@
 .app {
-  display: flex;
   height: 100vh;
 }
 
 .site-layout {
-  padding: auto 2rem;
+  padding: auto 3rem;
 }
