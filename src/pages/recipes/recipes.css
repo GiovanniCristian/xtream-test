@@ -1,9 +1,14 @@
 .site-header {
-    background: none;
+    background: var(--primary);
+    box-sizing: border-box;
+    margin: auto 1.5rem;
+    border-radius: var(--borderSM);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.header-card,
-.footer-card {
+.header-card {
     border-radius: 0.6rem;
     background-color: var(--light);
     text-align: center;
