@@ -1,0 +1,29 @@
+.recipe-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 16px;
+}
+
+.recipe-ingredients {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.ingredient {
+    background-color: var(--light);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.recipe-instructions {
+    margin-bottom: 16px;
+}
+
+.add-comment {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
