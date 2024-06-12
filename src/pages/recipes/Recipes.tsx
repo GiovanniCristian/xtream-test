@@ -4,12 +4,14 @@ import { Cuisine } from "../../interfaces/cuisine"
 import { Diet } from "../../interfaces/diet"
 import { Difficulty } from "../../interfaces/difficulty"
 import axios from "axios"
-import { Layout, Row, Col, Spin } from "antd"
-import { Header, Content } from "antd/es/layout/layout"
+import { Layout, Row, Col, Spin, Flex, Typography } from "antd"
+import { Content } from "antd/es/layout/layout"
 import './recipes.css'
 import { Comments } from "../../interfaces/comments"
 import RecipeCard from "../../components/cards/recipeCards/RecipeCard"
 import RecipeModal from "../../components/modals/recipeModal/RecipeModal"
+
+const { Title } = Typography;
 
 const Home: React.FC = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
@@ -30,12 +32,14 @@ const Home: React.FC = () => {
         const difficultiesResponse = await axios.get('http://localhost:8080/difficulties');
         const commentsResponse = await axios.get('http://localhost:8080/comments');
 
-        setRecipes(recipesResponse.data);
-        setCuisines(cuisinesResponse.data);
-        setDiets(dietsResponse.data);
-        setDifficulties(difficultiesResponse.data);
-        setComments(commentsResponse.data);
-        setLoading(false);
+        setTimeout(() => {
+          setRecipes(recipesResponse.data);
+          setCuisines(cuisinesResponse.data);
+          setDiets(dietsResponse.data);
+          setDifficulties(difficultiesResponse.data);
+          setComments(commentsResponse.data);
+          setLoading(false)
+        }, 1000)
       } catch (error) {
         console.error('Error fetching data:', error);
         setLoading(false);
@@ -77,21 +81,19 @@ const Home: React.FC = () => {
   };
 
   return (
-    <Layout>
-      <Header className="site-header">
-        <Row justify="center">
-          <Col span={24}>
-            <div className="header-card">
-              <h1>Welcome to My Cooking Site</h1>
-            </div>
-          </Col>
-        </Row>
-      </Header>
+    <Layout className="recipes-layout">
       <Content className="site-content">
         {loading ? (
-          <Spin size="large" />
+          <Flex style={{ width: '100%', margin: 'auto', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <Spin size="large" />
+          </Flex>
         ) : (
           <Row gutter={[16, 16]} justify="center">
+            <Col span={24}>
+              <div className="header-card">
+                <Title level={2}>Welcome to My Cooking Site</Title>
+              </div>
+            </Col>
             {recipes.map(recipe => (
               <Col xs={24} sm={12} md={8} lg={6} key={recipe.id}>
                 <RecipeCard

@@ -22,7 +22,7 @@ const RecipeModal: React.FC<RecipesModalProps> = ({ open, onClose, recipe, addCo
             centered
         >
             <h1>{recipe.name}</h1>
-            <img src={recipe.image} alt={recipe.name} className="recipe-image" />
+            <img src={`http://localhost:8080${recipe.image}`} alt={recipe.name} className="recipe-image" />
             <h3>Ingredients:</h3>
             <div className="recipe-ingredients">
                 {recipe.ingredients.map((ingredient, index) => (

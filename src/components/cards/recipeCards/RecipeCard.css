@@ -1,12 +1,26 @@
 .recipe-card {
-  border-radius: 10px;
+  border-radius: var(--borderMD);
   overflow: hidden;
 }
 
-.recipe-meta {
-  margin-top: 8px;
+.card-body {
+  margin-top: 0.5rem;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
-.recipe-meta p {
+.card-body p {
   margin: 0;
+}
+
+.body-right img {
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+  border-radius: 50%;
 }
