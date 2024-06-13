@@ -15,6 +15,10 @@
     margin-bottom: 16px;
 }
 
+.ingredients-title {
+    margin: 0;
+}
+
 .ingredient {
     font-weight: 600;
     color: var(--primary);
@@ -23,15 +27,41 @@
     border-radius: 5px;
 }
 
-.recipe-instructions {
-    margin-bottom: 16px;
+.recipe-specifics {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    box-sizing: border-box;
 }
 
-.add-comment {
-    margin-top: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.spec-title {
+    margin: 2rem auto !important;
+}
+
+.comments {
+    margin: 0;
+}
+
+.comment-carousel {
+    width: 50%;
+    height: auto;
+    box-sizing: border-box;
+    border: 0.1rem solid var(--primary);
+    border-radius: var(--borderMD);
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+}
+
+.comment-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.comment-date {
+    font-style: italic;
+    font-size: 0.6rem;
 }
 
 .title {
