@@ -4,7 +4,7 @@ import { Cuisine } from "../../interfaces/cuisine"
 import { Diet } from "../../interfaces/diet"
 import { Difficulty } from "../../interfaces/difficulty"
 import axios from "axios"
-import { Layout, Row, Col, Spin, Flex, Typography } from "antd"
+import { Layout, Row, Col, Spin, Empty, Typography } from "antd"
 import { Content, Header } from "antd/es/layout/layout"
 import './recipes.css'
 import { Comments } from "../../interfaces/comments"
@@ -13,7 +13,7 @@ import RecipeModal from "../../components/modals/recipeModal/RecipeModal"
 
 const { Title } = Typography;
 
-const Home: React.FC = () => {
+const Recipes: React.FC = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [cuisines, setCuisines] = useState<Cuisine[]>([]);
   const [diets, setDiets] = useState<Diet[]>([]);
@@ -39,7 +39,7 @@ const Home: React.FC = () => {
           setDifficulties(difficultiesResponse.data);
           setComments(commentsResponse.data);
           setLoading(false)
-        }, 1000)
+        }, 800)
       } catch (error) {
         console.error('Error fetching data:', error);
         setLoading(false);
@@ -80,17 +80,30 @@ const Home: React.FC = () => {
     setComments([...comments, newComment]);
   };
 
+  const isEmptyState = () => {
+    return (
+      recipes.length === 0 ||
+      cuisines.length === 0 ||
+      diets.length === 0 ||
+      difficulties.length === 0 ||
+      comments.length === 0
+    );
+  };
+
   return (
     <Layout className="recipes-layout">
       <Header className="site-header">
-        <Title level={2} style={{margin: 0}}>Recipe Book</Title>
+        <Title level={2} style={{ margin: 0 }}>Recipe Book</Title>
       </Header>
       <Content className="site-content">
         {loading ? (
-          <Flex style={{ width: '100%', margin: 'auto', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <div style={{ width: '100%', margin: 'auto', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <Spin size="large" />
-          </Flex>
-        ) : (
+          </div>
+        ) : isEmptyState() && (
+          <Empty description="No data available, try again" />
+        )}
+        {!loading && (
           <Row gutter={[16, 16]} justify="center">
             {recipes.map(recipe => (
               <Col xs={24} sm={12} md={8} lg={6} key={recipe.id}>
@@ -125,4 +138,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default Recipes;

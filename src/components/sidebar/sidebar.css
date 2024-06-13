@@ -1,16 +1,12 @@
 .sidebar {
     height: 100vh;
-    position: fixed;
+    position: fixed !important;
     left: 0;
     top: 0;
     bottom: 0;
     z-index: 1000;
     background-color: var(--dark) !important;
     overflow: auto;
-}
-
-.site-layout {
-    transition: margin-left 0.5s;
 }
 
 .menu {

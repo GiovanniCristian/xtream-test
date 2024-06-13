@@ -1,8 +1,8 @@
-.home-layout {
+.add-layout {
     gap: 2rem;
 }
 
-.header {
+.add-header {
     width: 100%;
     height: auto;
     box-sizing: border-box;
@@ -12,7 +12,7 @@
     align-items: center;
 }
 
-.home {
+.add {
     width: 100%;
     height: auto;
     box-sizing: border-box;
@@ -23,16 +23,4 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-evenly;
-}
-
-.typed {
-    color: var(--dark);
-    font-size: 2rem;
-    font-weight: 600;
-    margin: 0;
-}
-
-.footer {
-    width: 100%;
-    text-align: center;
 }
