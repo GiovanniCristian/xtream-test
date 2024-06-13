@@ -120,6 +120,7 @@
     width: 1.5rem;
     height: 1.5rem;
     transition: 0.5s ease-in-out;
+    fill: var(--primary);
 }
 
 .icon:hover {

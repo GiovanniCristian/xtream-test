@@ -20,14 +20,10 @@
 }
 
 .ant-menu-item {
-    fill: var(--primary);
+    fill: var(--primary) !important;
 }
 
 .ant-menu-item-selected {
     background-color: var(--light) !important;
     color: var(--primary) !important;
-}
-
-svg {
-    fill: var(--primary);
 }
