@@ -18,3 +18,7 @@
 .site-content {
     padding: 1.5rem;
 }
+
+.ant-spin-dot-item {
+    background-color: var(--primary) !important;
+}
