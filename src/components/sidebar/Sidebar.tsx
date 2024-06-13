@@ -18,7 +18,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
                 <Menu.Item key="1" icon={<HomeOutlined />}>
                     <Link to="/" className='menu-link'>Home</Link>
                 </Menu.Item>
-                <Menu.Item key="2" icon={<BookFilled />}>
+                <Menu.Item key="2" icon={<BookFilled />} style={{margin: '1.5rem auto'}}>
                     <Link to="recipes" className='menu-link'>Recipes</Link>
                 </Menu.Item>
                 <Menu.Item key="3" icon={<MailOutlined />}>
