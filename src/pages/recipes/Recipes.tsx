@@ -5,7 +5,7 @@ import { Diet } from "../../interfaces/diet"
 import { Difficulty } from "../../interfaces/difficulty"
 import axios from "axios"
 import { Layout, Row, Col, Spin, Flex, Typography } from "antd"
-import { Content } from "antd/es/layout/layout"
+import { Content, Header } from "antd/es/layout/layout"
 import './recipes.css'
 import { Comments } from "../../interfaces/comments"
 import RecipeCard from "../../components/cards/recipeCards/RecipeCard"
@@ -82,6 +82,9 @@ const Home: React.FC = () => {
 
   return (
     <Layout className="recipes-layout">
+      <Header className="site-header">
+        <Title level={2} style={{margin: 0}}>Recipe Book</Title>
+      </Header>
       <Content className="site-content">
         {loading ? (
           <Flex style={{ width: '100%', margin: 'auto', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -89,11 +92,6 @@ const Home: React.FC = () => {
           </Flex>
         ) : (
           <Row gutter={[16, 16]} justify="center">
-            <Col span={24}>
-              <div className="header-card">
-                <Title level={2}>Recipe Book</Title>
-              </div>
-            </Col>
             {recipes.map(recipe => (
               <Col xs={24} sm={12} md={8} lg={6} key={recipe.id}>
                 <RecipeCard
