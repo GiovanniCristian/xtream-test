@@ -27,3 +27,7 @@
     background-color: var(--light) !important;
     color: var(--primary) !important;
 }
+
+svg {
+    fill: var(--primary);
+}

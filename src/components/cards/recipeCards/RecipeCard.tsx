@@ -8,8 +8,8 @@ const RecipeCard: React.FC<RecipesCardProps> = ({ name, image, cuisineId, dietId
             <Card.Meta title={name} className="card-title"/>
             <div className="card-body">
                 <div className="body-left">
-                    <p>👨🏻‍🍳 {cuisineId}</p>
-                    <p>🥬 {dietId}</p>
+                    <p>&#129368; {cuisineId}</p>
+                    <p>&#129388; {dietId}</p>
                 </div>
                 <div className="body-right">
                     <img src={`http://localhost:8080${image}`} alt={name} />
