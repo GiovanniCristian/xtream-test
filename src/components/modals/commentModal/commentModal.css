@@ -1,0 +1,26 @@
+.comment-modal-title {
+    color: var(--dark);
+    margin: 0;
+}
+
+.comment-modal-rate {
+    margin: 0.8rem auto;
+}
+
+.comment-modal-text {
+    color: var(--dark);
+    overflow: hidden;
+    margin-bottom: 1.3rem;
+    resize: none !important;
+}
+
+.comment-modal-btn {
+    background-color: var(--primary);
+    color: var(--dark);
+    font-weight: 600;
+}
+
+.comment-modal-btn:hover {
+    color: var(--primary) !important;
+    border-color: var(--primary) !important;
+}

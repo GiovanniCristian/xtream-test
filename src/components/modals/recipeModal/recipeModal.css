@@ -37,3 +37,14 @@
 .title {
     color: var(--dark);
 }
+
+.recipe-btn {
+    background-color: var(--primary);
+    color: var(--dark);
+    font-weight: 600;
+}
+
+.recipe-btn:hover {
+    color: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
