@@ -17,8 +17,8 @@
 
 .ingredient {
     font-weight: 600;
-    color: var(--dark);
-    background-color: var(--primary);
+    color: var(--primary);
+    border: 0.1rem solid var(--primary);
     padding: 5px 10px;
     border-radius: 5px;
 }
