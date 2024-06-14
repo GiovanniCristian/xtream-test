@@ -10,7 +10,6 @@ import { Cuisine } from '../../interfaces/cuisine';
 import { Diet } from '../../interfaces/diet';
 import { Difficulty } from '../../interfaces/difficulty';
 import axios from 'axios';
-import { Bounce, toast } from 'react-toastify';
 
 const { Title } = Typography;
 
@@ -39,30 +38,8 @@ const AddRecipes = () => {
         setCuisines(cuisinesResponse.data);
         setDiets(dietsResponse.data);
         setDifficulties(difficultiesResponse.data);
-        toast.success('Data fetching success', {
-          position: "bottom-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-          transition: Bounce,
-        })
       } catch (error) {
         console.error('Error fetching data:', error);
-        toast.error('Ops.. something went wrong', {
-          position: "bottom-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-          transition: Bounce,
-        })
       }
     };
 
@@ -109,7 +86,7 @@ const AddRecipes = () => {
         <div className='add-content-right'>
           <div className="recipe-preview">
             <Title className='title' level={2}>{recipe.name}</Title>
-            {recipe.image && <img src={recipe.image} alt={recipe.name} className="recipe-image" />}
+            {recipe.image && <img src={recipe.image} alt={recipe.name} className="recipe-content-image" />}
             <div className="recipe-ingredients">
               {recipe.ingredients.map((ingredient, index) => (
                 <span key={index} className="ingredient">{ingredient}</span>

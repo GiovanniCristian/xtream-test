@@ -37,3 +37,20 @@
     align-items: center;
     justify-content: space-evenly;
 }
+
+.recipe-preview {
+    width: 100%;
+    height: auto;
+    border-radius: var(--borderMD);
+    box-shadow: rgba(255, 166, 0, 0.39) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.recipe-content-image {
+    width: 100%;
+    height: auto;
+    max-height: 20rem;
+    object-fit: cover;
+    margin-bottom: 16px;
+    border-radius: var(--borderMD);
+    border: 0.1rem solid var(--primary);
+}

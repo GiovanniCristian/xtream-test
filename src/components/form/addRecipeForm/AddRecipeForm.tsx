@@ -5,7 +5,6 @@ import axios from 'axios';
 import { Cuisine } from '../../../interfaces/cuisine';
 import { Diet } from '../../../interfaces/diet';
 import { Difficulty } from '../../../interfaces/difficulty';
-import { Bounce, ToastContainer, toast } from 'react-toastify';
 import { AddRecipeFormProps, Recipe } from '../../../interfaces/recipes';
 import './addRecipeForm.css'
 
@@ -13,6 +12,7 @@ const { TextArea } = Input;
 const { Option } = Select;
 
 const AddRecipeForm: React.FC<AddRecipeFormProps> = ({ cuisines, diets, difficulties, onChange }) => {
+    const [messageApi, contextHolder] = message.useMessage();
     const [form] = Form.useForm();
     const [formComplete, setFormComplete] = useState<boolean>(false);
     const [recipe, setRecipe] = useState<Recipe>({
@@ -38,9 +38,12 @@ const AddRecipeForm: React.FC<AddRecipeFormProps> = ({ cuisines, diets, difficul
     const handleImageUpload = (file: any) => {
         const isJpgOrPngOrWebp = file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/webp';
         if (!isJpgOrPngOrWebp) {
-            message.error('You can only upload JPG/PNG/WEBP file!');
+            messageApi.open({
+                type: 'error',
+                content: 'You can only upload JPG/PNG/WEBP file!'
+            });
         }
-        const updatedRecipe = { ...recipe, image: URL.createObjectURL(file) };
+        const updatedRecipe = { ...recipe, image: file };
         setRecipe(updatedRecipe);
         onChange(updatedRecipe);
         return false;
@@ -60,83 +63,71 @@ const AddRecipeForm: React.FC<AddRecipeFormProps> = ({ cuisines, diets, difficul
                 formData.append('image', recipe.image);
             }
 
-            await axios.post('http://localhost:8080/recipes', formData, {
+            const response = await axios.post('http://localhost:8080/recipes', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-
+            const newRecipe = response.data;
+            const updateRecipe = { ...recipe, image: newRecipe.image };
+            setRecipe(updateRecipe);
             form.resetFields();
-            toast.success('Recipe added successfully!', {
-                position: "bottom-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-                transition: Bounce,
-            });
+            messageApi.open({
+                type: 'success',
+                content: 'Recipe added successfully!'
+            })
         } catch (error) {
             console.error('Failed to add recipe:', error);
-            toast.error('Failed to add recipe.', {
-                position: "bottom-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-                transition: Bounce,
-            });
+            messageApi.open({
+                type: 'error',
+                content: 'Failed to add recipe'
+            })
         }
     };
 
     return (
         <>
+            {contextHolder}
             <Form form={form} onValuesChange={handleFormChange} onFinish={handleSubmit} layout="vertical" className='add-form'>
-                <Form.Item name="name" label="Recipe Name" rules={[{ required: true, message: 'Please enter the recipe name' }]}>
+                <Form.Item name="name" label="Recipe Name" rules={[{ required: true, message: 'Please enter the recipe name' }]} className='form-item'>
                     <Input />
                 </Form.Item>
-                <Form.Item name="image" label="Image" valuePropName="fileList" getValueFromEvent={(e: any) => e?.fileList} required>
+                <Form.Item name="image" label="Image" valuePropName="fileList" getValueFromEvent={(e: any) => e?.fileList} required className='form-item'>
                     <Upload beforeUpload={handleImageUpload} listType="picture">
                         <Button icon={<UploadOutlined />}>Upload Image</Button>
                     </Upload>
                 </Form.Item>
-                <Form.Item name="ingredients" label="Ingredients" rules={[{ required: true, message: 'Please enter the ingredients' }]}>
+                <Form.Item name="ingredients" label="Ingredients" rules={[{ required: true, message: 'Please enter the ingredients' }]} className='form-item'>
                     <Select mode="tags" style={{ width: '100%' }} tokenSeparators={[',']} />
                 </Form.Item>
-                <Form.Item name="instructions" label="Instructions" rules={[{ required: true, message: 'Please enter the instructions' }]}>
-                    <TextArea rows={4} />
+                <Form.Item name="instructions" label="Instructions" rules={[{ required: true, message: 'Please enter the instructions' }]} className='form-item'>
+                    <TextArea rows={4} style={{ resize: 'none' }} />
                 </Form.Item>
-                <Form.Item name="cuisineId" label="Cuisine" rules={[{ required: true, message: 'Please select the cuisine' }]}>
+                <Form.Item name="cuisineId" label="Cuisine" rules={[{ required: true, message: 'Please select the cuisine' }]} className='form-item'>
                     <Select>
                         {cuisines.map((cuisine: Cuisine) => (
                             <Option key={cuisine.id} value={cuisine.id}>{cuisine.name}</Option>
                         ))}
                     </Select>
                 </Form.Item>
-                <Form.Item name="dietId" label="Diet Type" rules={[{ required: true, message: 'Please select the diet type' }]}>
+                <Form.Item name="dietId" label="Diet Type" rules={[{ required: true, message: 'Please select the diet type' }]} className='form-item'>
                     <Select>
                         {diets.map((diet: Diet) => (
                             <Option key={diet.id} value={diet.id}>{diet.name}</Option>
                         ))}
                     </Select>
                 </Form.Item>
-                <Form.Item name="difficultyId" label="Difficulty" rules={[{ required: true, message: 'Please select the difficulty' }]}>
+                <Form.Item name="difficultyId" label="Difficulty" rules={[{ required: true, message: 'Please select the difficulty' }]} className='form-item'>
                     <Select>
                         {difficulties.map((difficulty: Difficulty) => (
                             <Option key={difficulty.id} value={difficulty.id}>{difficulty.name}</Option>
                         ))}
                     </Select>
                 </Form.Item>
-                <Form.Item>
+                <Form.Item className='form-item'>
                     <Button type="primary" htmlType="submit" disabled={!formComplete}>Add Recipe</Button>
                 </Form.Item>
             </Form>
-            <ToastContainer />
         </>
     );
 };

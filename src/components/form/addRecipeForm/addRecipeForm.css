@@ -1,3 +1,8 @@
 .add-form {
     width: 50%;
+    gap: 0.5rem;
+}
+
+.form-item {
+    margin-bottom: 0.6rem !important;
 }
