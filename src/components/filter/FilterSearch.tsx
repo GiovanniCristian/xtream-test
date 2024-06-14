@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import { Input, Select, Row, Col } from 'antd';
 import { FilterSearchProps, Filters } from '../../interfaces/filterSearch';
 import axios from 'axios';
@@ -53,11 +53,15 @@ const FilterSearch: React.FC<FilterSearchProps> = ({ onSearch, onFilter }) => {
         onFilter(newFilters);
     };
 
+    const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+        onSearch(e.target.value);
+    };
+
     return (
         <div className="filter-search">
             <Row gutter={[16, 16]}>
                 <Col xs={24} sm={12} md={6}>
-                    <Search placeholder="Search..." onSearch={onSearch} />
+                    <Search placeholder="Search..." onChange={handleSearchChange} className='search' />
                 </Col>
                 <Col xs={24} sm={12} md={6}>
                     <Select placeholder="Select cuisine" onChange={handleCuisineChange} style={{ width: '100%' }}>

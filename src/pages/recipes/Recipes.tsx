@@ -10,6 +10,7 @@ import './recipes.css'
 import { Comments } from "../../interfaces/comments"
 import RecipeCard from "../../components/cards/recipeCards/RecipeCard"
 import RecipeModal from "../../components/modals/recipeModal/RecipeModal"
+import FilterSearch from "../../components/filter/FilterSearch"
 
 const { Title } = Typography;
 
@@ -22,6 +23,7 @@ const Recipes: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
   const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [filteredRecipes, setFilteredRecipes] = useState<Recipe[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,6 +40,7 @@ const Recipes: React.FC = () => {
           setDiets(dietsResponse.data);
           setDifficulties(difficultiesResponse.data);
           setComments(commentsResponse.data);
+          setFilteredRecipes(recipesResponse.data)
           setLoading(false)
         }, 800)
       } catch (error) {
@@ -48,6 +51,39 @@ const Recipes: React.FC = () => {
 
     fetchData();
   }, []);
+
+  const debounce = (func: (...args: any[]) => void, delay: number) => {
+    let timeoutId: ReturnType<typeof setTimeout>;
+    return (...args: any[]) => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+      timeoutId = setTimeout(() => {
+        func(...args);
+      }, delay);
+    };
+  };
+
+  const onSearch = debounce((value: string) => {
+    const filtered = recipes.filter(recipe => recipe.name.toLowerCase().includes(value.toLowerCase()));
+    setFilteredRecipes(filtered);
+  }, 300);
+
+  const onFilter = (filters: any) => {
+    let filtered = recipes;
+
+    if (filters.cuisineId) {
+      filtered = filtered.filter(recipe => recipe.cuisineId === filters.cuisineId);
+    }
+    if (filters.dietId) {
+      filtered = filtered.filter(recipe => recipe.dietId === filters.dietId);
+    }
+    if (filters.difficultyId) {
+      filtered = filtered.filter(recipe => recipe.difficultyId === filters.difficultyId);
+    }
+
+    setFilteredRecipes(filtered);
+  };
 
   const getCuisineId = (id: string) => {
     const cuisine = cuisines.find(cuisine => cuisine.id === id);
@@ -94,6 +130,7 @@ const Recipes: React.FC = () => {
     <Layout className="recipes-layout">
       <Header className="site-header">
         <Title level={2} style={{ margin: 0 }}>Recipe Book</Title>
+        <FilterSearch onSearch={onSearch} onFilter={onFilter} />
       </Header>
       <Content className="site-content">
         {loading ? (
@@ -105,7 +142,7 @@ const Recipes: React.FC = () => {
         )}
         {!loading && (
           <Row gutter={[16, 16]} justify="center">
-            {recipes.map(recipe => (
+            {filteredRecipes.map(recipe => (
               <Col xs={24} sm={12} md={8} lg={6} key={recipe.id}>
                 <RecipeCard
                   id={recipe.id}
