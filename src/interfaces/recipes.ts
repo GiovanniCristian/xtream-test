@@ -1,4 +1,7 @@
 import { Comments } from "./comments";
+import { Cuisine } from "./cuisine";
+import { Diet } from "./diet";
+import { Difficulty } from "./difficulty";
 
 export interface Recipe {
     id: string;
@@ -39,4 +42,10 @@ export interface RecipesModalProps {
 
 export interface AddRecipeProps {
     onChange: (newRecipe: Recipe) => void;
+}
+
+export interface AddRecipeFormProps extends AddRecipeProps {
+    cuisines: Cuisine[];
+    diets: Diet[];
+    difficulties: Difficulty[];
 }

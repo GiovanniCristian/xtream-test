@@ -28,7 +28,7 @@ if (!fs.existsSync('uploads')) {
 }
 
 app.use(middlewares);
-
+app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
 // Custom route to handle multipart/form-data POST requests

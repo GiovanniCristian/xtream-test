@@ -351,6 +351,20 @@
       "dietId": "3",
       "difficultyId": "1",
       "image": "/uploads/Pasta-Primavera-f.jpg"
+    },
+    {
+      "id": "1718365993693",
+      "name": "Penne al Salmone",
+      "ingredients": [
+        "Panna",
+        "Pasta",
+        "Salmone"
+      ],
+      "instructions": "cuoci tutto",
+      "cuisineId": "1",
+      "dietId": "2",
+      "difficultyId": "1",
+      "image": null
     }
   ],
   "comments": [
