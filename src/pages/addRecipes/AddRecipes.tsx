@@ -84,19 +84,19 @@ const AddRecipes = () => {
           <Lottie animationData={Arrow} style={{ width: '25%' }} />
         </div>
         <div className='add-content-right'>
-          <div className="recipe-preview">
-            <Title className='title' level={2}>{recipe.name}</Title>
+          <div className="recipe-content-preview">
+            <Title className='title' level={3}>{recipe.name}</Title>
             {recipe.image && <img src={recipe.image} alt={recipe.name} className="recipe-content-image" />}
-            <div className="recipe-ingredients">
+            <div className="recipe-content-ingredients">
               {recipe.ingredients.map((ingredient, index) => (
                 <span key={index} className="ingredient">{ingredient}</span>
               ))}
             </div>
-            <div className="recipe-instructions">{recipe.instructions}</div>
-            <div className='recipe-specifics'>
-              <Title level={5}>&#129368; {getCuisineName(recipe.cuisineId)}</Title>
-              <Title level={5}>&#129388; {getDietName(recipe.dietId)}</Title>
-              <Title level={5}>&#128246; {getDifficultyName(recipe.difficultyId)}</Title>
+            <div className="recipe-content-instructions"><Title level={5} style={{margin: 0, fontSize: '1rem', fontWeight: 300}}>{recipe.instructions}</Title></div>
+            <div className='recipe-content-specifics'>
+              <Title level={5} style={{margin: 0}}>&#129368; {getCuisineName(recipe.cuisineId)}</Title>
+              <Title level={5} style={{margin: 0}}>&#129388; {getDietName(recipe.dietId)}</Title>
+              <Title level={5} style={{margin: 0}}>&#128246; {getDifficultyName(recipe.difficultyId)}</Title>
             </div>
           </div>
         </div>

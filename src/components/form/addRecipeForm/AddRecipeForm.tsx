@@ -124,7 +124,7 @@ const AddRecipeForm: React.FC<AddRecipeFormProps> = ({ cuisines, diets, difficul
                         ))}
                     </Select>
                 </Form.Item>
-                <Form.Item className='form-item'>
+                <Form.Item className='form-item-btn'>
                     <Button type="primary" htmlType="submit" disabled={!formComplete}>Add Recipe</Button>
                 </Form.Item>
             </Form>
