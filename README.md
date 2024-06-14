@@ -33,7 +33,7 @@ code .
 # Install modules
 npm install
 
-After that, open two side terminals
+# After that, open two side terminals
 
 # First terminal, Starts the project in development
 npm run dev
