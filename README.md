@@ -38,7 +38,7 @@ npm install
 # First terminal, Starts the project in development
 npm run dev
 
-Then
+# Then
 
 # Second terminal, go into server folder
 cd server
