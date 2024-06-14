@@ -36,3 +36,7 @@ export interface RecipesModalProps {
         comments: Comments[];
     }
 }
+
+export interface AddRecipeProps {
+    onChange: (newRecipe: Recipe) => void;
+}
