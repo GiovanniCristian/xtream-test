@@ -6,6 +6,7 @@ import Home from './pages/home/Home';
 import Recipes from './pages/recipes/Recipes';
 import AddRecipes from './pages/addRecipes/AddRecipes';
 import Sidebar from './components/sidebar/Sidebar';
+import NotFound from './pages/notFound/NotFound';
 
 const { Content } = Layout;
 
@@ -26,6 +27,7 @@ const App: React.FC = () => {
               <Route path="/" index element={<Home />} />
               <Route path="recipes" element={<Recipes />} />
               <Route path="add" element={<AddRecipes />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </Content>
         </Layout>
