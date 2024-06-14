@@ -16,11 +16,23 @@
     width: 100%;
     height: auto;
     box-sizing: border-box;
-    background-color: var(--primary);
+    background-color: white;
     border-radius: var(--borderMD);
     padding: 1rem !important;
     display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    box-shadow: rgba(255, 165, 0, 0.25) 0rem 0.4rem 0.8rem -0.13rem, rgba(0, 0, 0, 0.3) 0rem 0.19rem 0.45rem -0.19rem;
+}
+
+.add-content-left,
+.add-content-right {
+    width: 50%;
+    height: auto;
+    box-sizing: border-box;
+    padding: 0.6rem;
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-evenly;
 }
