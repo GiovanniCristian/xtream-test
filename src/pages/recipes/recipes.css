@@ -4,7 +4,7 @@
     margin: auto 1.5rem;
     border-radius: var(--borderSM);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
