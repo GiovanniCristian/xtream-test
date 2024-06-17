@@ -353,6 +353,20 @@
       "image": "/uploads/Pasta-Primavera-f.jpg"
     },
     {
+      "id": "1718365993693",
+      "name": "Penne al Salmone",
+      "ingredients": [
+        "Panna",
+        "Pasta",
+        "Salmone"
+      ],
+      "instructions": "cuoci tutto",
+      "cuisineId": "1",
+      "dietId": "2",
+      "difficultyId": "1",
+      "image": null
+    },
+    {
       "id": "1718615565591",
       "name": "Risotto Pollo e Salsa di Soia",
       "ingredients": [
@@ -366,6 +380,36 @@
       "dietId": "3",
       "difficultyId": "2",
       "image": "/uploads/1718615565588.jpg"
+    },
+    {
+      "id": "1718617735003",
+      "name": "Pasta al Pomodoro",
+      "ingredients": [
+        "Pasta",
+        "Pomodoro",
+        "Basilico",
+        "Aglio",
+        "Cipolla"
+      ],
+      "instructions": "Cuoci la pasta nell'acqua che metterai a bollire, soffriggi aglio e cipolla in padella e versa la salsa di pomodoro.",
+      "cuisineId": "1",
+      "dietId": "2",
+      "difficultyId": "1",
+      "image": "/uploads/1718617735002.jpg"
+    },
+    {
+      "id": "1718618249051",
+      "name": "Tortellini con Panna",
+      "ingredients": [
+        "Tortellini",
+        "Panna",
+        "Pepe"
+      ],
+      "instructions": "Cuoci i tortellini e versa successivamente la panna da cucina, pizzico di pepe nel piatto",
+      "cuisineId": "1",
+      "dietId": "3",
+      "difficultyId": "1",
+      "image": "/uploads/1718618249048.jpg"
     }
   ],
   "comments": [
