@@ -6,6 +6,7 @@ import { Cuisine } from '../../../interfaces/cuisine';
 import { Diet } from '../../../interfaces/diet';
 import { Difficulty } from '../../../interfaces/difficulty';
 import { AddRecipeFormProps, Recipe } from '../../../interfaces/recipes';
+import type { UploadFile } from 'antd';
 import './addRecipeForm.css'
 
 const { TextArea } = Input;
@@ -15,6 +16,7 @@ const AddRecipeForm: React.FC<AddRecipeFormProps> = ({ cuisines, diets, difficul
     const [messageApi, contextHolder] = message.useMessage();
     const [form] = Form.useForm();
     const [formComplete, setFormComplete] = useState<boolean>(false);
+    const [fileList, setFileList] = useState<UploadFile[]>([]);
     const [recipe, setRecipe] = useState<Recipe>({
         id: '',
         name: '',
@@ -36,17 +38,29 @@ const AddRecipeForm: React.FC<AddRecipeFormProps> = ({ cuisines, diets, difficul
     };
 
     const handleImageUpload = (file: any) => {
-        const isJpgOrPngOrWebp = file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/webp';
-        if (!isJpgOrPngOrWebp) {
+        const validationImage = file.type === 'image/jpeg' || file.type === 'image/png' || file.type === 'image/webp';
+        if (!validationImage) {
             messageApi.open({
                 type: 'error',
                 content: 'You can only upload JPG/PNG/WEBP file!'
             });
+            return Upload.LIST_IGNORE;
         }
-        const updatedRecipe = { ...recipe, image: file };
-        setRecipe(updatedRecipe);
-        onChange(updatedRecipe);
+        const reader = new FileReader();
+        reader.onload = e => {
+            const updatedRecipe = { ...recipe, image: e.target?.result as string };
+            setRecipe(updatedRecipe);
+            onChange(updatedRecipe);
+        };
+        reader.readAsDataURL(file);
+
+        setFileList([file]);
         return false;
+    };
+
+    const handleRemove = () => {
+        setRecipe({ ...recipe, image: '' });
+        setFileList([]);
     };
 
     const handleSubmit = async () => {
@@ -60,7 +74,7 @@ const AddRecipeForm: React.FC<AddRecipeFormProps> = ({ cuisines, diets, difficul
             formData.append('dietId', values.dietId);
             formData.append('difficultyId', values.difficultyId);
             if (recipe.image) {
-                formData.append('image', recipe.image);
+                formData.append('image', fileList[0] as any);
             }
 
             const response = await axios.post('http://localhost:8080/recipes', formData, {
@@ -72,6 +86,7 @@ const AddRecipeForm: React.FC<AddRecipeFormProps> = ({ cuisines, diets, difficul
             const updateRecipe = { ...recipe, image: newRecipe.image };
             setRecipe(updateRecipe);
             form.resetFields();
+            setFileList([]);
             messageApi.open({
                 type: 'success',
                 content: 'Recipe added successfully!'
@@ -93,7 +108,12 @@ const AddRecipeForm: React.FC<AddRecipeFormProps> = ({ cuisines, diets, difficul
                     <Input />
                 </Form.Item>
                 <Form.Item name="image" label="Image" valuePropName="fileList" getValueFromEvent={(e: any) => e?.fileList} required className='form-item'>
-                    <Upload beforeUpload={handleImageUpload} listType="picture">
+                    <Upload
+                        listType="picture"
+                        beforeUpload={handleImageUpload}
+                        onRemove={handleRemove}
+                        fileList={fileList}
+                    >
                         <Button icon={<UploadOutlined />}>Upload Image</Button>
                     </Upload>
                 </Form.Item>

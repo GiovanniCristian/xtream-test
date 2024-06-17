@@ -353,18 +353,19 @@
       "image": "/uploads/Pasta-Primavera-f.jpg"
     },
     {
-      "id": "1718365993693",
-      "name": "Penne al Salmone",
+      "id": "1718615565591",
+      "name": "Risotto Pollo e Salsa di Soia",
       "ingredients": [
-        "Panna",
-        "Pasta",
-        "Salmone"
+        "Riso",
+        "Salsa di soia",
+        "Pollo",
+        "Prezzemolo"
       ],
-      "instructions": "cuoci tutto",
-      "cuisineId": "1",
-      "dietId": "2",
-      "difficultyId": "1",
-      "image": null
+      "instructions": "Cucina il pollo con gli aromi e mescola nel risotto sfumato con spumante, olio e un po' d'acqua",
+      "cuisineId": "3",
+      "dietId": "3",
+      "difficultyId": "2",
+      "image": "/uploads/1718615565588.jpg"
     }
   ],
   "comments": [

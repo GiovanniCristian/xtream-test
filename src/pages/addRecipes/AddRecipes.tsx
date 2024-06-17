@@ -68,7 +68,7 @@ const AddRecipes = () => {
   return (
     <Layout className='add-layout'>
       <Header className='add-header'>
-        <Title level={2} style={{ margin: 0 }} className='add-title'>Add a new recipe</Title>
+        <Title level={2} style={{ margin: '0.6rem 0rem' }} className='add-title'>Add a new recipe</Title>
       </Header>
       <Content className='add'>
         <div className='add-content-left'>
@@ -92,11 +92,11 @@ const AddRecipes = () => {
                 <span key={index} className="ingredient">{ingredient}</span>
               ))}
             </div>
-            <div className="recipe-content-instructions"><Title level={5} style={{margin: 0, fontSize: '1rem', fontWeight: 300}}>{recipe.instructions}</Title></div>
+            <div className="recipe-content-instructions"><Title level={5} style={{ margin: 0, fontSize: '1rem', fontWeight: 300 }}>{recipe.instructions}</Title></div>
             <div className='recipe-content-specifics'>
-              <Title level={5} style={{margin: 0}}>&#129368; {getCuisineName(recipe.cuisineId)}</Title>
-              <Title level={5} style={{margin: 0}}>&#129388; {getDietName(recipe.dietId)}</Title>
-              <Title level={5} style={{margin: 0}}>&#128246; {getDifficultyName(recipe.difficultyId)}</Title>
+              <Title level={5} style={{ margin: 0 }}>&#129368; {getCuisineName(recipe.cuisineId)}</Title>
+              <Title level={5} style={{ margin: 0 }}>&#129388; {getDietName(recipe.dietId)}</Title>
+              <Title level={5} style={{ margin: 0 }}>&#128246; {getDifficultyName(recipe.difficultyId)}</Title>
             </div>
           </div>
         </div>
