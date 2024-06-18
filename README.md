@@ -11,6 +11,7 @@
 - [Node.js](https://nodejs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Vite](https://vitejs.dev/)
+- [Jest](https://jestjs.io/)
 - Specific Libraries:
   - [Ant Design](https://ant.design/)
   - [Typed](https://typed.js/)
